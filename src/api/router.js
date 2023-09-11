@@ -9,14 +9,18 @@ import * as authController from './auth/auth.controller.js';
 
 const router = Router();
 
-router.use('/awards', awardsRouter);
-router.use('/bookings', bookingsRouter);
-router.use('/services', servicesRouter);
-router.use('/users', usersRouter);
+// router.use('/awards', awardsRouter);
+// router.use('/bookings', bookingsRouter);
+// router.use('/services', servicesRouter);
+// router.use('/users', usersRouter);
 
-router.post('/register', authController.register);
+// router.post('/register', authController.register);
 router.post('/login', authController.login);
 
-router.get('/confirm/:emailtoken', authController.confirm);
+// router.get('/confirm/:emailtoken', authController.confirm);
+
+router.get('/test', (req, res) => {
+  res.send('Desafio tripulaciones!');
+});
 
 export default router;

@@ -1,14 +1,14 @@
 {
-  "name": "apihair",
+  "name": "MdE-Events-Backend",
   "version": "1.0.0",
-  "description": "API Hair Backend",
+  "description": "API MdE Backend",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Sergio Andrés",
+  "author": "DT2023 The Bridge",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.39.0",

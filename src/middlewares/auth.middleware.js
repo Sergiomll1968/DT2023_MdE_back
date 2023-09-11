@@ -20,14 +20,15 @@ function middleware(req, res, next) {
   // res.setHeader('Access-Control-Allow-Credentials', true);
 
   const publicRoutes = [
-    '/login',
-    '/register',
-    '/users/changepasswordrequest',
-    '/users/changepassword',
-    '/bookings/day',
-    '/services/all',
-    '/awards/all',
-    '/confirm',
+    // '/login',
+    // '/register',
+    // '/users/changepasswordrequest',
+    // '/users/changepassword',
+    // '/bookings/day',
+    // '/services/all',
+    // '/awards/all',
+    // '/confirm',
+    '/test',
   ];
 
   const requestUrl = req.url;
