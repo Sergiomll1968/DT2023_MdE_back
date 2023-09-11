@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const serviceSchema = new Schema({
+const siteSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -24,6 +24,6 @@ const serviceSchema = new Schema({
   },
 });
 
-const serviceModel = model('Service', serviceSchema);
+const siteModel = model('Site', siteSchema);
 
-export default serviceModel;
+export default siteModel;
