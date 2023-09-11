@@ -1,17 +1,19 @@
 import Router from 'express';
 
-import awardsRouter from './awards/awards.router.js';
 import bookingsRouter from './bookings/bookings.router.js';
-import servicesRouter from './sites/services.router.js';
+import eventCategoriesRouter from './eventCategories/eventCategories.router.js';
+import eventsRouter from './events/events.router.js';
+import sitesRouter from './sites/sites.router.js';
 import usersRouter from './users/users.router.js';
 
 import * as authController from './auth/auth.controller.js';
 
 const router = Router();
 
-router.use('/awards', awardsRouter);
 router.use('/bookings', bookingsRouter);
-router.use('/services', servicesRouter);
+router.use('/eventCategories', eventCategoriesRouter);
+router.use('/events', eventsRouter);
+router.use('/sites', sitesRouter);
 router.use('/users', usersRouter);
 
 router.post('/register', authController.register);
