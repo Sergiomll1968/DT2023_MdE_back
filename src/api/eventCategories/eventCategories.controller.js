@@ -1,14 +1,14 @@
-import * as userService from './users.service.js';
+import * as eventCategoriesService from './eventCategories.service.js';
 
 export async function getAll(req, res) {
-  const users = await userService.getAll();
-  res.json(users);
+  const eventCategories = await eventCategoriesService.getAll();
+  res.json(eventCategories);
 }
 
 export async function getById(req, res) {
   const { id } = req.params;
-  const userById = await userService.getById({ id });
-  res.json(userById);
+  const eventCategoriesById = await eventCategoriesService.getById({ id });
+  res.json(eventCategoriesById);
 }
 
 export async function patchId(req, res) {
@@ -18,8 +18,8 @@ export async function patchId(req, res) {
     res.startus(401);
     res.json('This property cant be updeted');
   }
-  const updatedUser = await userService.patchId({ id, newProps });
-  res.json(updatedUser);
+  const eventCategoriesUpdated = await eventCategoriesService.patchId({ id, newProps });
+  res.json(eventCategoriesUpdated);
 }
 
 export async function changePasswordRequest(req, res) {
@@ -32,7 +32,7 @@ export async function changePasswordRequest(req, res) {
   }
 
   try {
-    await userService.changePasswordRequest({ email });
+    await eventCategoriesService.changePasswordRequest({ email });
   } catch (error) {
     const myError = JSON.parse(error.message);
     res.status(myError.status);
@@ -61,7 +61,7 @@ export async function changePassword(req, res) {
 
   let email;
   try {
-    email = await userService.changePassword({ token });
+    email = await eventCategoriesService.changePassword({ token });
   } catch (error) {
     const myError = JSON.parse(error.message);
     res.status(myError.status);
@@ -69,20 +69,20 @@ export async function changePassword(req, res) {
     return;
   }
 
-  let updatedUser;
+  let updatedEventCategories;
   try {
-    updatedUser = await userService.updateByEmail({ email, password });
+    updatedEventCategories = await eventCategoriesService.updateByEmail({ email, password });
   } catch (error) {
     const myError = JSON.parse(error.message);
     res.status(myError.status);
     res.json(myError.message);
     return;
   }
-  res.json(updatedUser);
+  res.json(updatedEventCategories);
 }
 
-export async function getUsernameByToken(req, res) {
-  const user = { ...req.user };
-  delete user.password;
-  res.json(user);
+export async function getEventCategoriesByToken(req, res) {
+  const eventCategories = { ...req.eventCategories };
+  delete eventCategories.password;
+  res.json(eventCategories);
 }

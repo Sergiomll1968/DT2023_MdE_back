@@ -1,25 +1,25 @@
 import nodemailer from 'nodemailer';
 import jwt from 'jsonwebtoken';
 import { hashSync } from 'bcrypt';
-import * as usersRepo from './users.repository.js';
+import * as eventCategoriesRepo from './eventCategories.repository.js';
 
 const {
   EMAIL_ADDRESS, EMAIL_PASSWORD, HOST, CHANGE_PASSWORD_ROUTE, JWT_SECRET, JWT_EXPIRES_IN,
 } = process.env;
 
 export async function getAll() {
-  const users = await usersRepo.getAll();
-  return users;
+  const eventCategories = await eventCategoriesRepo.getAll();
+  return eventCategories;
 }
 
 export async function getById({ id }) {
-  const user = await usersRepo.getById({ id });
-  return user;
+  const eventCategory = await eventCategoriesRepo.getById({ id });
+  return eventCategory;
 }
 
 export async function changePasswordRequest({ email }) {
-  const user = await usersRepo.getByEmail({ email });
-  if (!user) {
+  const eventCategory = await eventCategoriesRepo.getByEmail({ email });
+  if (!eventCategory) {
     const myError = { status: 403, message: 'Mail does not exist' };
     throw new Error(JSON.stringify(myError));
   }
@@ -30,7 +30,7 @@ export async function changePasswordRequest({ email }) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: EMAIL_ADDRESS,
+      eventCategory: EMAIL_ADDRESS,
       pass: EMAIL_PASSWORD,
     },
   });
@@ -41,7 +41,7 @@ export async function changePasswordRequest({ email }) {
     from: 'Los máquinas de TheBridge <correothebridge01@gmail.com>',
     to: `${email}`,
     subject: 'Enlace para recuperar su contraseña:',
-    text: `localhost:3001/users/changepassword/${tempToken}`,
+    text: `localhost:3001/eventCategories/changepassword/${tempToken}`,
     html: htmlLink,
   };
 
@@ -65,20 +65,20 @@ export async function changePassword({ token }) {
 
 export async function updateByEmail({ email, password }) {
   const hashedPassword = hashSync(password, 10);
-  const updatedUser = await usersRepo.updateByEmail({ email, hashedPassword });
-  if (!updatedUser) {
+  const updatedEventCategory = await eventCategoriesRepo.updateByEmail({ email, hashedPassword });
+  if (!updatedEventCategory) {
     const myError = { status: 403, message: 'Mail does not exist' };
     throw new Error(JSON.stringify(myError));
   }
-  return updatedUser;
+  return updatedEventCategory;
 }
 
 export async function patchId({ id, newProps }) {
-  const updatedUser = await usersRepo.patchId({ id, newProps });
-  return updatedUser;
+  const updatedeventCategory = await eventCategoriesRepo.patchId({ id, newProps });
+  return updatedeventCategory;
 }
 
-export async function getByUsername({ username }) {
-  const user = await usersRepo.getByUsername({ username });
-  return user;
+export async function getByeventCategoryname({ eventCategoryname }) {
+  const eventCategory = await eventCategoriesRepo.getByeventCategoryname({ eventCategoryname });
+  return eventCategory;
 }

@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const userSchema = new Schema({
+const eventCategorySchema = new Schema({
   username: { type: String, required: [true, 'El nombre es obligatorio'] },
   phone: { type: String, required: false },
   mail: { type: String, required: true },
@@ -11,6 +11,6 @@ const userSchema = new Schema({
   confirmed: { type: Boolean, required: false, default: false },
 });
 
-const userModel = model('User', userSchema);
+const eventCategoryModel = model('eventCategories', eventCategorySchema);
 
-export default userModel;
+export default eventCategoryModel;

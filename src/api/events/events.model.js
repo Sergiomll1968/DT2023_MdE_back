@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const awardSchema = new Schema({
+const eventSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -16,6 +16,6 @@ const awardSchema = new Schema({
   },
 });
 
-const awardModel = model('Award', awardSchema);
+const eventSchemaModel = model('events', eventSchema);
 
-export default awardModel;
+export default eventSchemaModel;
