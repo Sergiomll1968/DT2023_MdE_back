@@ -1,0 +1,24 @@
+// events
+// POST --- login
+// POST --- register
+// GET --- events/all
+// GET --- events/:id/detail
+// POST --- events
+// PATCH --- events/:id
+// GET --- events/next/:quantity
+// DELETE --- events/:id
+// GET --- events/:id/freeSeats
+
+// bookings
+// POST --- bookings --- {idUser,IdEvent,attended: false}
+// PATCH --- bookings/:id/assist --- {attended: true}
+// PATCH --- bookings/:id/feedback --- {feedback}
+
+// users
+
+// eventCategories 
+// GET --- eventCategories/all
+
+// sites
+// GET --- sites/all
+// GET --- sites/available/:id/:date --- {true or false}
